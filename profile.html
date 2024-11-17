@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Perfil do Usuário</h1>
+    </header>
+    <main class="main">
+        <div class="profile-info">
+            <h2>Informações do Usuário</h2>
+            <p id="userName"></p>
+            <p id="userEmail"></p>
+            <p id="userPhone"></p>
+            <p id="userCpf"></p>
+        </div>
+    </main>
+
+    <script>
+        
+        const userData = JSON.parse(localStorage.getItem('user'));
+
+        if (userData) {
+            document.getElementById('userName').textContent = `Nome: ${userData.name}`;
+            document.getElementById('userEmail').textContent = `Email: ${userData.email}`;
+            document.getElementById('userPhone').textContent = `Telefone: ${userData.phone}`;
+            document.getElementById('userCpf').textContent = `CPF: ${userData.cpf}`;
+        } else {
+            document.querySelector('.main').innerHTML = '<p>Nenhum usuário encontrado.</p>';
+        }
+    </script>
+</body>
+</html>
